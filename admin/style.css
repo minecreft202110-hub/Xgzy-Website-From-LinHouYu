@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minecraft星轨织语生存服 -多人在线生存服务器，提供进入游戏，游玩服务器，纯净生存等玩法！Minecraft Survival Server.">
+    <meta name="keywords" content="我的世界, Minecraft, 服务器, 生存服, RPG, 建筑, 星轨织语, MC, 游戏, 多人联机">
+    <meta name="author" content="小狐狸生存服团队">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="#">
+    <!-- 二开请标注原作者小狐务器 -->
+    <title>我的世界星轨织语服务器 - 首页</title>
+    <link rel="dns-prefetch" href="https://mc.163.com">
+    <link rel="dns-prefetch" href="https://www.minecraft.net">
+    <link rel="preload" href="style.css?v=3" as="style">
+    <link rel="preload" href="script.js?v=7" as="script">
+    <link rel="preload" href="./png/c6d2dd6a664242e2e5faa640d28c340b.jpg" as="image" fetchpriority="high">
+    
+    <link rel="stylesheet" href="style.css?v=3">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "我的世界星轨织语生存服",
+      "description": "多人在线生存服务器，提供进入游戏，游玩服务器，纯净生存等玩法。",
+      "genre": ["Sandbox", "Survival", "RPG"],
+      "gamePlatform": "PC",
+      "applicationCategory": "Game",
+      "operatingSystem": "Windows, macOS, Linux",
+      "author": {
+        "@type": "Organization",
+        "name": "星轨织语服务器团队",
+        "url": "/"
+      },
+      "image": "./png/wj_Narcissa_3.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+    <link rel="icon" href="https://p.qlogo.cn/gh/879110692/879110692/100" referrerpolicy="no-referrer">
+</head>
+<body>
+    <!-- SVG Sprite -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17L4 12"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19"/><path d="M12 5L19 12L12 19"/></symbol>
+        <symbol id="icon-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4H20V20H4V4Z"/><path d="M4 12H20"/><path d="M12 4V20"/></symbol>
+    </svg>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="siteLogo">
+                <img src="https://p.qlogo.cn/gh/879110692/879110692/100" width="64" height="64" class="logo-svg" alt="Logo" referrerpolicy="no-referrer" style="border-radius: 50%; object-fit: cover;">
+                <span class="logo-text">星轨织语服务器</span>
+            </a>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#specs">配置</a></li>
+                <li><a href="#help-docs">帮助</a></li>
+                <li><a href="#features">特色</a></li>
+                <li><a href="#gallery">相册</a></li>
+                <li><a href="#team">团队</a></li>
+                <li><a href="#contact">联系</a></li>
+                <li><a href="#community">社区</a></li>
+                <li id="navUserEntry" hidden><a href="user/login.php" class="nav-register-btn" id="navLoginBtn">登录/注册</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="homeAnnouncements" class="home-announcements" hidden>
+        <div class="container">
+            <div id="homeAnnouncementsList" class="home-announcements-list"></div>
+        </div>
+    </div>
+
+    <div id="announcementPopup" class="announcement-popup" hidden>
+        <div class="announcement-popup-backdrop" data-close-popup="1"></div>
+        <div class="announcement-popup-card" role="dialog" aria-modal="true" aria-labelledby="announcementPopupTitle">
+            <button type="button" class="announcement-popup-close" id="announcementPopupClose" aria-label="关闭弹窗">×</button>
+            <div class="announcement-popup-badge" id="announcementPopupBadge">维护通知</div>
+            <h2 id="announcementPopupTitle">维护公告</h2>
+            <p id="announcementPopupTime" class="announcement-popup-time"></p>
+            <div id="announcementPopupContent" class="announcement-popup-content"></div>
+        </div>
+    </div>
+
+    <!-- 区域 (首页) -->
+    <header id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                
+                
+                <!-- 在线状态指示器 (新增) -->
+                <div class="server-status scroll-fade-up delay-200">
+                    <span class="status-dot"></span>
+                    <span class="status-text">服务器在线: <span class="highlight-green">加载中...</span> 玩家</span>
+                </div>
+
+                <!-- 主标题 -->
+                <h1 class="scroll-fade-up delay-300">
+                    欢迎来到<br>
+                    <span class="highlight">星轨织语生存服</span>
+                </h1>
+                
+                <!-- 副标题 -->
+                <p class="hero-subtitle scroll-fade-up delay-400">
+                    由专业团队倾力打造的多人在线游戏，为您带来高质量的游戏体验
+                </p>
+
+                <!-- 特性列表 -->
+                <div class="hero-features scroll-fade-up delay-500">
+                    <div class="h-feature"><svg width="16" height="16"><use href="#icon-check"/></svg>公益</div>
+                    <div class="h-feature"><svg width="16" height="16"><use href="#icon-check"/></svg>轻度生电</div>
+                    <div class="h-feature"><svg width="16" height="16"><use href="#icon-check"/></svg>不神权</div>
+                </div>
+
+                <!-- 按钮组 -->
+                <div class="hero-buttons scroll-fade-up delay-600">
+                    <input id="toggle" type="checkbox">
+                    <label class="boton-minecraft" for="toggle">
+                        <svg viewBox="0 0 32 32" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 2H2v28h28z" fill="#52a535"></path>
+                            <path d="M24.4 13.2h-5.6v.47h5.6zm-5.6 8.4h-5.6v.47h5.6zm2.8 2.8h-2.8v.47h2.8zm-8.4 0h-2.8v.47h2.8zm0-11.2H7.6v.47h5.6z" fill="#86d562"></path>
+                            <path d="M24.4 13.2V7.6h-5.6v5.6h-5.6V16h-2.8v8.4h2.8v-2.8h5.6v2.8h2.8V16h-2.8v-2.8zM13.2 7.6H7.6v5.6h5.6z"></path>
+                            <path d="M24.4 7.6h-5.6v.47h5.6zm-5.6 5.6h-5.6v.47h5.6zm-5.6-5.6H7.6v.47h5.6zm0 8.4h-2.8v.47h2.8zm8.4 0h-2.8v.47h2.8z" fill="#2a641c"></path>
+                        </svg>
+                        <div class="texto-boton">
+                            <span>复制 IP 地址</span>
+                            <span>点击复制</span>
+                            <span>已复制!</span>
+                        </div>
+                    </label>
+                    <span id="server-ip">play.mcxgzy.top</span>
+                    
+                    <a href="#community" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4H20V20H4V4Z"/><path d="M4 9H20"/></svg>
+                        加入社区
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Server Specs Section -->
+    <section id="specs" class="specs-section" data-bg="url('./png/89ce487b74da31797c19a3dc4ffc0d79.jpg')">
+        <div class="container">
+            <div class="section-header scroll-fade-up">
+                <h2 class="section-title">服务器配置</h2>
+                <p class="section-subtitle">为了给您提供最卡顿的游戏体验，我们不惜成本选用了底级的家用级硬件设施（不是</p>
+            </div>
+            
+            <div class="specs-grid">
+                <!-- CPU Card -->
+                <div class="spec-card scroll-fade-up delay-100">
+                    <div class="spec-icon-wrapper">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="./png/CPU.png" alt="CPU" class="spec-icon">
+                    </div>
+                    <h3 class="spec-title">处理器</h3>
+                    <p class="spec-desc">Intel Core i7-12700K</p>
+                    <div class="spec-value">i7-12700K</div>
+                </div>
+
+                <!-- RAM Card -->
+                <div class="spec-card scroll-fade-up delay-200 revealed">
+                    <div class="spec-icon-wrapper">
+                        <img src="./png/RAM.png" alt="RAM" class="spec-icon">
+                    </div>
+                    <h3 class="spec-title">运行内存</h3>
+                    <p class="spec-desc">32GB DDR5 6000MHz ECC 纠错内存，告别卡顿与崩溃</p>
+                    <div class="spec-value">32GB DDR5</div>
+                </div>
+
+                <!-- Network Card -->
+                <div class="spec-card scroll-fade-up delay-300">
+                    <div class="spec-icon-wrapper">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="./png/network.png" alt="Network" class="spec-icon">
+                    </div>
+                    <h3 class="spec-title">网络带宽</h3>
+                    <p class="spec-desc">三线 BGP 优化线路，千兆上下行对等带宽，低延迟畅玩</p>
+                    <div class="spec-value">1Gbps BGP</div>
+                </div>
+
+                <!-- Storage Card -->
+                <div class="spec-card scroll-fade-up delay-400 revealed">
+                    <div class="spec-icon-wrapper">
+                        <img src="./png/SSD.png" alt="SSD" class="spec-icon">
+                    </div>
+                    <h3 class="spec-title">高速存储</h3>
+                    <p class="spec-desc">企业级 NVMe SSD RAID 10 阵列，地图加载瞬间完成</p>
+                    <div class="spec-value">NVMe RAID 10</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Docs Section (How to Join) -->
+    <section id="help-docs" class="help-section" data-bg="url('./png/9cca3afcca8c0a79eac6a39aad5d65ec.jpg')">
+        <div class="container">
+            <div class="section-header scroll-fade-up">
+                <h2 class="section-title">如何加入服务器</h2>
+                <p class="section-subtitle">简单三步，你就可以闪击服务器了</p>
+            </div>
+
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step-card scroll-fade-up delay-100">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">下载启动器</h3>
+                    <p class="step-desc">我们需要MC启动器才能进入服务器。点击下方按钮下载启动器。</p>
+                    <a href="https://hmcl.huangyuhui.net/" class="btn-step">下载启动器 (HMCL)</a>
+                </div>
+
+                <!-- Arrow 1 -->
+                <div class="step-arrow scroll-fade-up delay-200"><svg width="24" height="24"><use href="#icon-arrow-right"/></svg></div>
+
+                <!-- Step 2 -->
+                <div class="step-card scroll-fade-up delay-300">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">加QQ群绑定</h3>
+                    <p class="step-desc">加入qq群，在群公告找到我们的IP地址。</p>
+                    <div class="server-address-box">
+                        <span id="help-ip">879110692</span>
+                        <button class="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Arrow 2 -->
+                <div class="step-arrow scroll-fade-up delay-400"><svg width="24" height="24"><use href="#icon-arrow-right"/></svg></div>
+
+                <!-- Step 3 -->
+                <div class="step-card scroll-fade-up delay-500">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3L19 12L5 21V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">进入游戏</h3>
+                    <p class="step-desc">双击服务器列表中的图标，进入服务器获取绑定码在QQ群内绑定。</p>
+                    <span class="highlight-text">祝您游戏愉快！</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Features Section -->
+    <!-- Server Gallery Section -->
+    <section id="gallery" class="gallery-section" data-bg="url('./png/f5ea0ca06bf5ac36704b7277536ab53d.jpg')">
+        <div class="container">
+            <div class="section-header scroll-fade-up">
+                <h2 class="section-title">游戏截图</h2>
+                <p class="section-subtitle">每一帧都是壁纸，记录我们在服务器的点点滴滴</p>
+            </div>
+
+            <div class="gallery-carousel-container">
+                <div class="gallery-carousel-wrapper" id="galleryWrapper">
+                    <img id="galleryImage" class="gallery-active-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="./png/f5ea0ca06bf5ac36704b7277536ab53d.jpg" alt="Gallery Display" decoding="async">
+                </div>
+                
+                <div class="gallery-controls">
+                    <div class="gallery-text-content">
+                        <p id="galleryDescription">建造庞大的定居点或简朴的土屋。这个世界由你尽情创造！</p>
+                    </div>
+                    <div class="gallery-nav-buttons">
+                        <button class="nav-btn prev-btn" id="prevBtn">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                            </svg>
+                        </button>
+                        <button class="nav-btn next-btn" id="nextBtn">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="team" class="team-section" data-bg="url('./png/achXdg.jpg')">
+        <div class="container">
+            <div class="section-header scroll-fade-up">
+                <h2 class="section-title">管理团队</h2>
+                <p class="section-subtitle">专业的运营团队，致力于为您提供最好的游戏体验</p>
+            </div>
+
+            <div class="team-carousel-container scroll-fade-up delay-200">
+                <div class="team-carousel-wrapper" id="teamWrapper">
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="https://q1.qlogo.cn/g?b=qq&nk=3392029129&s=640" 
+                                 alt="第一服主头像" loading="lazy">
+                        </div>
+                        <h3 class="team-name">第一服主</h3>
+                        <p class="team-role">NikaMiamXx</p>
+                        <p class="team-desc">负责服务器整体规划与运营，确保服务器长期稳定运行。</p>
+                        <a href="#" class="team-contact-btn">联系我</a>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="https://q1.qlogo.cn/g?b=qq&nk=2934586281&s=640" 
+                                 alt="第二服主头像" loading="lazy">
+                        </div>
+                        <h3 class="team-name">第二服主</h3>
+                        <p class="team-role">Zheng_Changbin</p>
+                        <p class="team-desc">和第一服主一样的，经常会代替第一服主。</p>
+                        <a href="#" class="team-contact-btn">联系我</a>
+                    </div>
+                    
+                    <!-- <div class="team-card">  有可能MIKA会开一个巡查服，暂时先不放这个位置了
+                        <div class="team-avatar">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="./egg/cat3.jpg" 
+                                 alt="社区巡查头像" loading="lazy">
+                        </div>
+                        <h3 class="team-name">社区巡查</h3>
+                        <p class="team-role">未定</p>
+                        <p class="team-desc">维护游戏秩序，处理玩家纠纷，营造良好社区氛围。</p>
+                        <a href="#" class="team-contact-btn">联系我</a>
+                    </div> -->
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="https://q1.qlogo.cn/g?b=qq&nk=2217401336&s=640" 
+                                 alt="建筑师头像" loading="lazy">
+                        </div>
+                        <h3 class="team-name">建筑师</h3>
+                        <p class="team-role">momoyyds</p>
+                        <p class="team-desc">负责主城及公共设施的建筑设计与搭建。</p>
+                        <a href="#" class="team-contact-btn">联系我</a>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="https://github.com/linhouyu.png" 
+                                 alt="技术支持头像" loading="lazy">
+                        </div>
+                        <h3 class="team-name">技术支持</h3>
+                        <p class="team-role">LinHouYu</p>
+                        <p class="team-desc">负责修复服务器bug，写插件等。</p>
+                        <a href="https://github.com/LinHouYu" class="team-contact-btn" target="_blank" rel="noopener">联系我</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Support Section -->
+    <!-- Join Community Section -->
+<section id="community" class="community-section" data-bg="url('./png/wj%20Narcissa%203.png')">
+        <div class="container">
+            <div class="section-header scroll-fade-up">
+                <h2 class="section-title">加入社区</h2>
+                <p class="section-subtitle">加入我们的玩家交流群，获取最新资讯与福利</p>
+            </div>
+
+            <div class="community-grid">
+                <div class="community-card scroll-fade-up delay-100">
+                    <div class="community-icon-wrapper">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                             data-src="https://p.qlogo.cn/gh/879110692/879110692/0" 
+                             alt="QQ群" 
+                             class="community-icon-img" 
+                             loading="lazy"
+                             referrerpolicy="no-referrer">
+                    </div>
+                    <h3>官方QQ群</h3>
+                    <p>与其他玩家实时交流，获取最新公告</p>
+                    <div class="qr-placeholder">
+                        <div class="qr-code">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                data-src="./png/QR_QQ.jpg" 
+                                alt="QQ群二维码" 
+                                class="community-icon-img" 
+                                loading="lazy">
+                        </div>    
+                    </div>
+                    <a href="https://qm.qq.com/q/HOrNGJ9vC6" class="community-btn qq-btn">点击加入群聊</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo" id="footerLogo">
+                    <svg class="footer-logo-svg" width="24" height="24"><use href="#icon-cube"/></svg>
+                    <span class="footer-logo-text">星轨织语服务器</span>
+                </a>
+                <p class="footer-desc">
+                    由专业团队倾力打造的大型多人在线游戏，致力于为玩家提供最优质的游戏体验与最温馨的社区氛围。
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#specs">服务器配置</a></li>
+                        <li><a href="#help-docs">如何加入</a></li>
+                        <li><a href="#features">游戏特色</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>社区互动</h4>
+                    <ul>
+                        <li><a href="#gallery">游戏截图</a></li>
+                        <li><a href="#team">管理团队</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                        <li><a href="#community">加入社区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>友情链接</h4>
+                    <ul id="footerFriendLinks">
+                        <li><a href="https://mc.163.com/">我的世界官网</a></li>
+                        <li><a href="https://www.minecraft.net/">我的世界国际服</a></li>
+                        <li><a href="#">敬请期待</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025-2026 星轨织语. All rights reserved.</p>
+                <p class="disclaimer">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=7" defer></script>
+</body>
+</html>
